@@ -1,0 +1,5 @@
+# Conservar bytes y SHA-256 de las migraciones y semilla protegidas,
+# incluso al clonar con core.autocrlf=true en Windows.
+/supabase/migrations/*.sql -text
+/server/migrations/*.sql -text
+/supabase/seed-demo.sql -text

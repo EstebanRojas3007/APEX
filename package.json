@@ -1,0 +1,54 @@
+{
+  "name": "apex",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "web": "expo start --web",
+    "android": "expo start --android",
+    "server:legacy": "tsx --env-file-if-exists=.env server/index.ts",
+    "test:admin:service": "tsx --test server/admin/*.test.ts",
+    "typecheck:edge": "deno check --config supabase/functions/admin-invitations/deno.json supabase/functions/admin-invitations/index.ts",
+    "test:admin:concurrency": "tsx scripts/test-admin-concurrency.ts",
+    "ai:worker": "tsx --env-file-if-exists=.env.ai server/ai/worker.ts",
+    "prepare:learning": "node scripts/prepare-learning-transition.mjs",
+    "test:learning": "tsx --test supabase/tests/learning.test.ts server/ai/adapter.test.ts",
+    "test:diagnostic": "tsx --test supabase/tests/diagnostic.test.ts supabase/tests/demo-english.test.ts",
+    "test:teacher": "tsx --test supabase/tests/teacher-groups.test.ts",
+    "test:teacher:concurrency": "tsx scripts/test-teacher-concurrency.ts",
+    "test:clocks": "tsx --test supabase/tests/assessment-clocks.test.ts src/assessmentTime.test.ts",
+    "typecheck": "tsc --noEmit && tsc -p server/tsconfig.json",
+    "test": "tsx --test supabase/tests/*.test.ts",
+    "test:legacy": "tsx --test server/*.test.ts",
+    "check:migrations": "node scripts/check-migrations.mjs",
+    "prepare:bank": "node scripts/build-apex-bank-load.mjs",
+    "check:client-bank": "node scripts/check-client-bank.mjs",
+    "test:e2e": "playwright test",
+    "test:android": "node scripts/verify-profile-android.mjs",
+    "export:web": "expo export --platform web",
+    "export:android": "expo export --platform android --output-dir dist-android"
+  },
+  "dependencies": {
+    "@react-native-community/datetimepicker": "9.1.0",
+    "@supabase/supabase-js": "^2.117.2",
+    "expo": "~57.0.25",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-url-polyfill": "^4.0.0",
+    "react-native-web": "~0.21.2"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.2",
+    "tsx": "^4.20.0",
+    "typescript": "~6.0.3"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

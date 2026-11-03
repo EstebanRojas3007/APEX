@@ -1,0 +1,494 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram id="com1" name="01 · Registro de estudiante">
+    <mxGraphModel dx="1700" dy="1250" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1700" pageHeight="1250" connect="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="&lt;b&gt;APEX · DIAGRAMA DE COMUNICACIÓN&lt;/b&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=28;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="20" width="1600" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" value="01 · Registro de estudiante — Creación de identidad y perfil, con manejo de registro parcial." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=18;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="80" width="1600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="A" value="«actor»&lt;br&gt;&lt;u&gt;&lt;b&gt;visitante:&lt;br&gt;Persona&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="B" value="«boundary»&lt;br&gt;&lt;u&gt;&lt;b&gt;registro:&lt;br&gt;FormularioRegistro&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="C" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;registro:&lt;br&gt;GestorRegistro&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="D" value="«external»&lt;br&gt;&lt;u&gt;&lt;b&gt;identidad:&lt;br&gt;ServicioAutenticación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="E" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;perfiles:&lt;br&gt;PerfilesUsuario&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="F" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;validador:&lt;br&gt;ValidadorRegistro&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="PRECONDICIÓN: registro público disponible.&lt;br&gt;FLUJO: solo se crea una cuenta estudiante por esta vía. Validar nombre, correo, fecha de nacimiento, programa, semestre, contraseña y confirmación.&lt;br&gt;Las credenciales se envían al servicio de autenticación; no se guardan en el perfil.&lt;br&gt;EXCEPCIONES: datos inválidos o correo existente → mostrar error. Identidad creada y perfil no guardado → mostrar estado pendiente y permitir completar el perfil sin crear otra identidad." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=#F8FAFC;strokeColor=none;">
+          <mxGeometry x="60" y="955" width="1500" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="Lectura: seguir la numeración, no la posición. 1.1.1 es un mensaje dentro de 1.1. [condición] indica una guarda.&lt;br&gt;Flechas: mensajes dirigidos; línea discontinua: respuesta. Participantes y servicios propuestos, no clases ya implementadas.&lt;br&gt;Versión 1.0 · 25 septiembre 2026 · Las reglas pendientes se indican expresamente en cada vista." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="60" y="1155" width="1530" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" edge="1" parent="1" source="A" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="1: enviarRegistro(datos)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="170" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" source="B" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.3;exitY=1;entryX=0.3;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="1.1: registrarEstudiante(datos)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="435" width="340" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="C" target="F" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" value="1.1.1: validarDatosYContraseña(datos)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="520" width="255" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="C" target="D" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.15;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="697.25" />
+              <mxPoint x="1160" y="470" />
+              <mxPoint x="1400" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t7" value="1.1.2 [válidos]: crearIdentidad(correo, contraseña)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1210" y="480" width="400" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="C" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.75;entryX=0;entryY=0.75;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="1.1.3 [identidad creada]:&lt;br&gt;guardarPerfil(uid, datos,&lt;br&gt;tipo=ESTUDIANTE)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="980" y="805" width="245" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="C" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.7;exitY=0;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" value="1.1.4 [éxito]:&lt;br&gt;registroCompleto()&lt;br&gt;&lt;br&gt;1.1.4 [error]:&lt;br&gt;errorORegistroPendiente()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="420" width="250" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="com2" name="02 · Emitir invitación docente">
+    <mxGraphModel dx="1700" dy="1250" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1700" pageHeight="1250" connect="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="&lt;b&gt;APEX · DIAGRAMA DE COMUNICACIÓN&lt;/b&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=28;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="20" width="1600" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" value="02 · Emitir invitación docente — Acción administrativa previa al ingreso del docente." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=18;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="80" width="1600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="A" value="«actor»&lt;br&gt;&lt;u&gt;&lt;b&gt;administrador:&lt;br&gt;Administrador&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="B" value="«boundary»&lt;br&gt;&lt;u&gt;&lt;b&gt;panel:&lt;br&gt;PanelAdministración&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="C" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;invitaciones:&lt;br&gt;GestorInvitaciones&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="D" value="«external»&lt;br&gt;&lt;u&gt;&lt;b&gt;correo:&lt;br&gt;ServicioCorreo&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="E" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;invitaciones:&lt;br&gt;InvitacionesDocentes&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="F" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;acceso:&lt;br&gt;ControlAcceso&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="PRECONDICIÓN: administrador autenticado y autorizado. En la primera etapa este rol lo asumen los desarrolladores.&lt;br&gt;La invitación se vincula al correo autorizado, tiene vencimiento y un solo uso. No contiene una contraseña permanente elegida por el administrador.&lt;br&gt;El envío se realiza después de guardar la invitación. Si falla el correo, se informa el fallo y se permite reenviar bajo control.&lt;br&gt;PENDIENTE: duración de la invitación y política de reenvío." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=#F8FAFC;strokeColor=none;">
+          <mxGeometry x="60" y="955" width="1500" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="Lectura: seguir la numeración, no la posición. 1.1.1 es un mensaje dentro de 1.1. [condición] indica una guarda.&lt;br&gt;Flechas: mensajes dirigidos; línea discontinua: respuesta. Participantes y servicios propuestos, no clases ya implementadas.&lt;br&gt;Versión 1.0 · 25 septiembre 2026 · Las reglas pendientes se indican expresamente en cada vista." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="60" y="1155" width="1530" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" edge="1" parent="1" source="A" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="1: invitarDocente(correo)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="170" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" source="B" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.3;exitY=1;entryX=0.3;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="1.1: emitirInvitación(correo)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="435" width="340" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="C" target="F" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" value="1.1.1: verificarPermiso(&lt;br&gt;INVITAR_DOCENTE)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="520" width="255" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="C" target="D" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.15;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="697.25" />
+              <mxPoint x="1160" y="470" />
+              <mxPoint x="1400" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t7" value="1.1.3 [guardada]:&lt;br&gt;enviarEnlaceInvitación(correo, enlace)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1210" y="480" width="400" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="C" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.75;entryX=0;entryY=0.75;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="1.1.2 [autorizado]:&lt;br&gt;crearInvitación(correo,&lt;br&gt;token, vencimiento)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="980" y="805" width="245" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="C" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.7;exitY=0;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" value="1.1.4: informarEstadoDelEnvío()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="420" width="250" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="com3" name="03 · Aceptar invitación docente">
+    <mxGraphModel dx="1700" dy="1250" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1700" pageHeight="1250" connect="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="&lt;b&gt;APEX · DIAGRAMA DE COMUNICACIÓN&lt;/b&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=28;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="20" width="1600" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" value="03 · Aceptar invitación docente — El destinatario establece su contraseña y completa sus datos." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=18;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="80" width="1600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="A" value="«actor»&lt;br&gt;&lt;u&gt;&lt;b&gt;invitado:&lt;br&gt;Docente&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="B" value="«boundary»&lt;br&gt;&lt;u&gt;&lt;b&gt;alta:&lt;br&gt;FormularioInvitación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="C" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;alta:&lt;br&gt;GestorAltaDocente&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="D" value="«external»&lt;br&gt;&lt;u&gt;&lt;b&gt;identidad:&lt;br&gt;ServicioAutenticación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="E" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;perfiles:&lt;br&gt;PerfilesUsuario&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="F" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;invitaciones:&lt;br&gt;InvitacionesDocentes&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="PRECONDICIÓN: el docente recibió un enlace de invitación. Validar vigencia, destinatario y uso único antes de conceder el rol.&lt;br&gt;Datos: nombre, correo autorizado, fecha de nacimiento, código de empleado, especialidad y contraseña.&lt;br&gt;La finalización debe ser recuperable ante fallos parciales y consumir la invitación una sola vez; no basta con ocultar el selector de rol en la interfaz.&lt;br&gt;POSTCONDICIÓN: perfil docente habilitado; el acceso a estudiantes dependerá de las asignaciones autorizadas." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=#F8FAFC;strokeColor=none;">
+          <mxGeometry x="60" y="955" width="1500" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="Lectura: seguir la numeración, no la posición. 1.1.1 es un mensaje dentro de 1.1. [condición] indica una guarda.&lt;br&gt;Flechas: mensajes dirigidos; línea discontinua: respuesta. Participantes y servicios propuestos, no clases ya implementadas.&lt;br&gt;Versión 1.0 · 25 septiembre 2026 · Las reglas pendientes se indican expresamente en cada vista." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="60" y="1155" width="1530" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" edge="1" parent="1" source="A" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="1: aceptarInvitación(&lt;br&gt;enlace, datos)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="170" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" source="B" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.3;exitY=1;entryX=0.3;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="1.1: completarAlta(token, datos)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="435" width="340" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="C" target="F" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" value="1.1.1: validarYReservar(token, correo)&lt;br&gt;&lt;br&gt;1.1.4 [perfil guardado]:&lt;br&gt;marcarUtilizada(token)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="520" width="255" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="C" target="D" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.15;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="697.25" />
+              <mxPoint x="1160" y="470" />
+              <mxPoint x="1400" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t7" value="1.1.2 [invitación válida y datos válidos]:&lt;br&gt;activarIdentidadInvitada(correo, contraseña)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1210" y="480" width="400" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="C" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.75;entryX=0;entryY=0.75;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="1.1.3 [identidad lista]:&lt;br&gt;guardarPerfilDocente(&lt;br&gt;uid, datos autorizados)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="980" y="805" width="245" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="C" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.7;exitY=0;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" value="1.1.5 [éxito]: altaCompleta()&lt;br&gt;&lt;br&gt;1.1.5 [fallo]:&lt;br&gt;informarErrorOAltaPendiente()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="420" width="250" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="com4" name="04 · Presentar evaluación">
+    <mxGraphModel dx="1700" dy="1250" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1700" pageHeight="1250" connect="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="&lt;b&gt;APEX · DIAGRAMA DE COMUNICACIÓN&lt;/b&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=28;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="20" width="1600" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" value="04 · Presentar evaluación — Inicio, guardado y finalización de un único intento por evaluación asignada." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=18;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="80" width="1600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="A" value="«actor»&lt;br&gt;&lt;u&gt;&lt;b&gt;estudiante:&lt;br&gt;Estudiante&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="B" value="«boundary»&lt;br&gt;&lt;u&gt;&lt;b&gt;vista:&lt;br&gt;PantallaEvaluación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="C" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;evaluación:&lt;br&gt;GestorEvaluación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="D" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;banco:&lt;br&gt;EvaluacionesYPreguntas&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="E" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;registro:&lt;br&gt;IntentosYRespuestas&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="F" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;calificación:&lt;br&gt;MotorCalificación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="PRECONDICIÓN: estudiante autenticado y evaluación asignada. La doble confirmación informa condiciones e intento único.&lt;br&gt;El tiempo comienza cuando la evaluación está lista para responder, como propuesta de diseño. No crear otro intento al repetir una solicitud por fallo de red.&lt;br&gt;Diagnóstico: 7 preguntas, sin límite total. Cuestionario: 15 preguntas / 30 min. Los 2 min por pregunta son un promedio.&lt;br&gt;Calificación por reglas propuesta: fórmula y rangos de nivel pendientes. Simulacro general: formato y duración oficial pendientes. La IA no bloquea la obtención del resultado numérico." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=#F8FAFC;strokeColor=none;">
+          <mxGeometry x="60" y="955" width="1500" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="Lectura: seguir la numeración, no la posición. 1.1.1 es un mensaje dentro de 1.1. [condición] indica una guarda.&lt;br&gt;Flechas: mensajes dirigidos; línea discontinua: respuesta. Participantes y servicios propuestos, no clases ya implementadas.&lt;br&gt;Versión 1.0 · 25 septiembre 2026 · Las reglas pendientes se indican expresamente en cada vista." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="60" y="1155" width="1530" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" edge="1" parent="1" source="A" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="1: confirmarInicioDosVeces()&lt;br&gt;2*: responderOPasarPregunta()&lt;br&gt;3: finalizarIntento()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="150" width="255" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" source="B" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.3;exitY=1;entryX=0.3;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="1.1: iniciar(evaluación)&lt;br&gt;2.1*: guardarRespuesta(&lt;br&gt;intento, pregunta, selección)&lt;br&gt;3.1: finalizar(intento)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="425" width="345" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="C" target="D" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.15;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="697.25" />
+              <mxPoint x="1160" y="470" />
+              <mxPoint x="1400" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t6" value="1.1.1: verificarAsignaciónYCargarPreguntas()&lt;br&gt;3.1.2: obtenerCriteriosDeCorrección()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1200" y="485" width="430" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="C" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.75;entryX=0;entryY=0.75;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t7" value="1.1.2: abrirIntentoÚnico()&lt;br&gt;2.1.1*: guardarRespuesta()&lt;br&gt;3.1.1: cerrarYLeerRespuestas()&lt;br&gt;3.1.4: guardarResultado()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="980" y="800" width="255" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="C" target="F" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="3.1.3: calcularResultado(&lt;br&gt;respuestas, criterios)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="560" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="C" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.7;exitY=0;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" value="1.1.3: mostrarEvaluación()&lt;br&gt;2.1.2*: confirmarGuardado()&lt;br&gt;3.1.5: mostrarResultado()&lt;br&gt;&lt;br&gt;*: mensaje repetido&lt;br&gt;por cada respuesta." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="405" width="255" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="com5" name="05 · Recuperar intento">
+    <mxGraphModel dx="1700" dy="1250" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1700" pageHeight="1250" connect="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="&lt;b&gt;APEX · DIAGRAMA DE COMUNICACIÓN&lt;/b&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=28;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="20" width="1600" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" value="05 · Recuperar intento — Interrupción temporal por desconexión y reanudación con la misma identidad de intento." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=18;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="80" width="1600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="A" value="«actor»&lt;br&gt;&lt;u&gt;&lt;b&gt;estudiante:&lt;br&gt;Estudiante&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="B" value="«boundary»&lt;br&gt;&lt;u&gt;&lt;b&gt;vista:&lt;br&gt;PantallaEvaluación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="C" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;evaluación:&lt;br&gt;GestorEvaluación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="D" value="«external»&lt;br&gt;&lt;u&gt;&lt;b&gt;identidad:&lt;br&gt;ServicioAutenticación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="E" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;registro:&lt;br&gt;IntentosYRespuestas&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="F" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;política:&lt;br&gt;ReglasReanudación&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="AL DETECTAR DESCONEXIÓN: la pantalla bloquea temporalmente nuevas respuestas, informa al estudiante y conserva la referencia del intento.&lt;br&gt;Las respuestas confirmadas permanecen guardadas. No declarar como guardada una respuesta pendiente de confirmación del servidor.&lt;br&gt;Al reconectar se solicita recuperar el mismo intento; si la sesión requiere verificación, se solicita antes de entregar datos.&lt;br&gt;PENDIENTES: plazo para reconectar, continuidad del cronómetro y resultado del bloqueo por inactividad. No asumir que desconexión e inactividad tienen idénticas consecuencias." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=#F8FAFC;strokeColor=none;">
+          <mxGeometry x="60" y="955" width="1500" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="Lectura: seguir la numeración, no la posición. 1.1.1 es un mensaje dentro de 1.1. [condición] indica una guarda.&lt;br&gt;Flechas: mensajes dirigidos; línea discontinua: respuesta. Participantes y servicios propuestos, no clases ya implementadas.&lt;br&gt;Versión 1.0 · 25 septiembre 2026 · Las reglas pendientes se indican expresamente en cada vista." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="60" y="1155" width="1530" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" edge="1" parent="1" source="A" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="1 [conexión restablecida]:&lt;br&gt;solicitarReanudación()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="170" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" source="B" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.3;exitY=1;entryX=0.3;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="1.1: recuperarMismoIntento(id)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="435" width="340" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="C" target="F" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" value="1.1.3: evaluarReanudación(&lt;br&gt;estado, tiempos)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="520" width="255" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="C" target="D" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.15;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="697.25" />
+              <mxPoint x="1160" y="470" />
+              <mxPoint x="1400" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t7" value="1.1.1: verificarSesiónOReautenticar()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1210" y="480" width="400" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="C" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.75;entryX=0;entryY=0.75;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="1.1.2 [identidad válida]:&lt;br&gt;leerIntentoPropio(id)&lt;br&gt;&lt;br&gt;1.1.4 [permitido]:&lt;br&gt;reanudarSinDuplicar(id)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="980" y="805" width="245" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="C" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.7;exitY=0;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" value="1.1.5 [permitido]:&lt;br&gt;restaurarRespuestasYTiempo()&lt;br&gt;&lt;br&gt;1.1.5 [denegado]:&lt;br&gt;mostrarMotivo()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="420" width="250" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="com6" name="06 · Consultar asistente IA">
+    <mxGraphModel dx="1700" dy="1250" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1700" pageHeight="1250" connect="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="&lt;b&gt;APEX · DIAGRAMA DE COMUNICACIÓN&lt;/b&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=28;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="20" width="1600" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" value="06 · Consultar asistente IA — Consulta en lenguaje natural con contexto académico y referencias autorizadas." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=18;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="50" y="80" width="1600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="A" value="«actor»&lt;br&gt;&lt;u&gt;&lt;b&gt;estudiante:&lt;br&gt;Estudiante&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="B" value="«boundary»&lt;br&gt;&lt;u&gt;&lt;b&gt;chat:&lt;br&gt;PantallaChat&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="C" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;asistencia:&lt;br&gt;ServicioAsistencia&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="650" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="D" value="«external»&lt;br&gt;&lt;u&gt;&lt;b&gt;gemini:&lt;br&gt;ProveedorIA&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="E" value="«control»&lt;br&gt;&lt;u&gt;&lt;b&gt;flujo:&lt;br&gt;OrquestadorIA&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="1240" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="F" value="«entity»&lt;br&gt;&lt;u&gt;&lt;b&gt;contexto:&lt;br&gt;ResultadosYFuentes&lt;/b&gt;&lt;/u&gt;" vertex="1" parent="1" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontFamily=Helvetica;fontSize=18;spacing=12;">
+          <mxGeometry x="60" y="680" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="PRECONDICIÓN: sesión válida y permiso aplicable al uso del contexto académico. El servidor verifica propiedad y autorización.&lt;br&gt;El contexto contiene medidas de desempeño necesarias; no incluye nombre, correo ni fecha de nacimiento. El texto libre también requiere tratamiento para evitar enviar datos personales innecesarios.&lt;br&gt;Orquestador previsto: n8n local; proveedor previsto: Gemini API. Credenciales de proveedor permanecen en el servidor.&lt;br&gt;Fuentes permitidas, plazo de respuesta y retención de chats pendientes. Si falla la IA, informar y ofrecer reintento; el historial académico continúa disponible." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=#F8FAFC;strokeColor=none;">
+          <mxGeometry x="60" y="955" width="1500" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="Lectura: seguir la numeración, no la posición. 1.1.1 es un mensaje dentro de 1.1. [condición] indica una guarda.&lt;br&gt;Flechas: mensajes dirigidos; línea discontinua: respuesta. Participantes y servicios propuestos, no clases ya implementadas.&lt;br&gt;Versión 1.0 · 25 septiembre 2026 · Las reglas pendientes se indican expresamente en cada vista." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="60" y="1155" width="1530" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" edge="1" parent="1" source="A" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="1: enviarMensaje(texto)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="170" width="245" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" source="B" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.3;exitY=1;entryX=0.3;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="1.1: consultarAsistente(texto)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="390" y="440" width="340" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="C" target="F" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" value="1.1.1 [autorizado]:&lt;br&gt;obtenerContextoPermitido()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="385" y="560" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="C" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t7" value="1.1.2: ejecutarFlujo(&lt;br&gt;textoDepurado, contexto)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="980" y="635" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="E" target="D" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.35;exitY=0;entryX=0.35;entryY=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="1.1.2.1: generarRespuesta(&lt;br&gt;contexto y fuentes)" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1155" y="410" width="185" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="D" target="E" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.8;exitY=1;entryX=0.8;entryY=0;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" value="1.1.2.2: devolver&lt;br&gt;respuestaPropuesta()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="1510" y="440" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="l6" edge="1" parent="1" source="E" target="C" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.4;exitY=1;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1368" y="890" />
+              <mxPoint x="874" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t10" value="1.1.2.3: comprobarReferenciasYDevolverRespuesta()&lt;br&gt;Si falta respaldo: indicar la limitación." vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=14;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="820" width="590" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l7" edge="1" parent="1" source="C" target="B" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#475569;exitX=0.7;exitY=0;entryX=0.7;entryY=1;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t11" value="1.1.3: mostrarRespuesta(&lt;br&gt;texto, referencias)&lt;br&gt;&lt;br&gt;[fallo]: informarYOfrecerReintento()" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=8;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;fillColor=none;strokeColor=none;">
+          <mxGeometry x="900" y="410" width="250" height="195" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" modified="2026-09-17T00:00:00.000Z" agent="Codex" version="28.2.8">
+  <diagram id="apex-class-model-v2" name="Diagrama de clases APEX">
+    <mxGraphModel dx="2200" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="DIAGRAMA DE CLASES DEL DOMINIO - APEX" style="text;html=1;align=center;verticalAlign=middle;fontSize=26;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="650" y="20" width="900" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Paquetes visuales -->
+        <mxCell id="pkg_identity" value="IDENTIDAD Y ROLES" style="swimlane;html=1;rounded=1;startSize=32;fontStyle=1;fontColor=#3D5A80;strokeColor=#8EAAC8;fillColor=#FFFFFF;swimlaneFillColor=#EEF3F8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="2100" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="pkg_content" value="CONTENIDO ACADÉMICO" style="swimlane;html=1;rounded=1;startSize=32;fontStyle=1;fontColor=#4A8268;strokeColor=#6BA38A;fillColor=#FFFFFF;swimlaneFillColor=#EDF7F1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="680" height="500" as="geometry"/>
+        </mxCell>
+        <mxCell id="pkg_eval" value="EVALUACIÓN" style="swimlane;html=1;rounded=1;startSize=32;fontStyle=1;fontColor=#3D5A80;strokeColor=#5B7FA5;fillColor=#FFFFFF;swimlaneFillColor=#EEF3F8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="400" width="780" height="500" as="geometry"/>
+        </mxCell>
+        <mxCell id="pkg_comm" value="ACOMPAÑAMIENTO Y COMUNICACIÓN" style="swimlane;html=1;rounded=1;startSize=32;fontStyle=1;fontColor=#8A5A2B;strokeColor=#D4A06A;fillColor=#FFFFFF;swimlaneFillColor=#FBF4EA;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="400" width="580" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="pkg_adaptive" value="PROGRESO Y PERSONALIZACIÓN" style="swimlane;html=1;rounded=1;startSize=32;fontStyle=1;fontColor=#6B5CA5;strokeColor=#9A89C9;fillColor=#FFFFFF;swimlaneFillColor=#F5F1FC;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="930" width="1490" height="480" as="geometry"/>
+        </mxCell>
+
+        <!-- Identidad -->
+        <mxCell id="class_usuario" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstracta&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Usuario&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- nombre: String&lt;br&gt;- correo: String&lt;br&gt;- fotoPerfilUrl: String&lt;br&gt;- fechaNacimiento: Date&lt;br&gt;- estado: EstadoUsuario&lt;hr&gt;+ actualizarPerfil(): void&lt;br&gt;+ iniciarSesion(): void&lt;br&gt;+ solicitarRecuperacion(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#5B7FA5;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="900" y="105" width="250" height="235" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_estudiante" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Estudiante&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- programaAcademico: String&lt;br&gt;- semestre: Integer&lt;hr&gt;+ realizarDiagnostico(): void&lt;br&gt;+ realizarSimulacro(): void&lt;br&gt;+ consultarRuta(): void&lt;br&gt;+ consultarProgreso(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#5B7FA5;fillColor=#F4F7FB;" vertex="1" parent="1">
+          <mxGeometry x="120" y="145" width="250" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_docente" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Docente&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- codigoEmpleado: String&lt;br&gt;- especialidad: String&lt;hr&gt;+ gestionarMaterial(): void&lt;br&gt;+ revisarProgreso(): void&lt;br&gt;+ registrarRetroalimentacion(): void&lt;br&gt;+ gestionarTutorias(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#6BA38A;fillColor=#F1F8F4;" vertex="1" parent="1">
+          <mxGeometry x="470" y="145" width="255" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_admin" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Administrador&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- nivelAcceso: Integer&lt;hr&gt;+ gestionarUsuarios(): void&lt;br&gt;+ gestionarRoles(): void&lt;br&gt;+ gestionarCatalogos(): void&lt;br&gt;+ supervisarPlataforma(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#D4A06A;fillColor=#FFF8EF;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="145" width="250" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- Contenido académico -->
+        <mxCell id="class_competencia" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Competencia&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- nombre: String&lt;br&gt;- descripcion: String&lt;br&gt;- activa: Boolean&lt;hr&gt;+ actualizar(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#6BA38A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="240" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_material" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;MaterialEstudio&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- titulo: String&lt;br&gt;- tipo: TipoMaterial&lt;br&gt;- urlRecurso: String&lt;br&gt;- nivel: NivelDificultad&lt;br&gt;- fechaPublicacion: Date&lt;br&gt;- activo: Boolean&lt;hr&gt;+ publicar(): void&lt;br&gt;+ actualizar(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#6BA38A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="420" y="450" width="250" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_pregunta" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Pregunta&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- enunciado: String&lt;br&gt;- tipo: TipoPregunta&lt;br&gt;- nivel: NivelDificultad&lt;br&gt;- explicacion: String&lt;br&gt;- activa: Boolean&lt;hr&gt;+ validarRespuesta(opcionId): Boolean&lt;br&gt;+ actualizar(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#6BA38A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="675" width="250" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_opcion" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;OpcionRespuesta&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- texto: String&lt;br&gt;- esCorrecta: Boolean&lt;br&gt;- orden: Integer" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#6BA38A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="430" y="720" width="230" height="145" as="geometry"/>
+        </mxCell>
+
+        <!-- Evaluación -->
+        <mxCell id="class_simulacro" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Simulacro&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- titulo: String&lt;br&gt;- tipo: TipoSimulacro&lt;br&gt;- duracionMinutos: Integer&lt;br&gt;- nivel: NivelDificultad&lt;br&gt;- activo: Boolean&lt;hr&gt;+ agregarPregunta(): void&lt;br&gt;+ iniciar(): IntentoSimulacro" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#5B7FA5;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="790" y="455" width="250" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_intento" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;IntentoSimulacro&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- fechaInicio: DateTime&lt;br&gt;- fechaFin: DateTime&lt;br&gt;- puntajeTotal: Decimal&lt;br&gt;- tiempoTotalSegundos: Integer&lt;br&gt;- estado: EstadoIntento&lt;hr&gt;+ registrarRespuesta(): void&lt;br&gt;+ finalizar(): void&lt;br&gt;+ calcularPuntaje(): Decimal" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#5B7FA5;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="445" width="270" height="245" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_respuesta" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;RespuestaEstudiante&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- fechaHora: DateTime&lt;br&gt;- esCorrecta: Boolean&lt;br&gt;- tiempoSegundos: Integer&lt;hr&gt;+ evaluar(): Boolean" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#5B7FA5;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="790" y="720" width="250" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_resultado" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;ResultadoCompetencia&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- puntaje: Decimal&lt;br&gt;- porcentajeAciertos: Decimal&lt;br&gt;- nivelEstimado: String&lt;br&gt;- fechaCalculo: DateTime&lt;hr&gt;+ calcular(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#5B7FA5;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="720" width="250" height="190" as="geometry"/>
+        </mxCell>
+
+        <!-- Progreso y personalización -->
+        <mxCell id="class_progreso" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Progreso&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- porcentajeGlobal: Decimal&lt;br&gt;- tiempoEstudioMinutos: Integer&lt;br&gt;- fechaActualizacion: DateTime&lt;hr&gt;+ actualizarDesdeIntento(): void&lt;br&gt;+ obtenerResumen(): String" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#9A89C9;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1000" width="255" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_ruta" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;RutaAprendizaje&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- fechaGeneracion: DateTime&lt;br&gt;- version: Integer&lt;br&gt;- estado: EstadoRuta&lt;hr&gt;+ recalcular(): void&lt;br&gt;+ obtenerSiguienteModulo(): ModuloRuta" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#9A89C9;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1000" width="260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_modulo" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;ModuloRuta&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- orden: Integer&lt;br&gt;- estado: EstadoModulo&lt;br&gt;- porcentajeAvance: Decimal&lt;br&gt;- fechaLimite: Date&lt;hr&gt;+ iniciar(): void&lt;br&gt;+ marcarCompletado(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#9A89C9;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="705" y="1000" width="245" height="205" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_feedback" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Retroalimentacion&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- tipo: TipoRetroalimentacion&lt;br&gt;- contenido: String&lt;br&gt;- fechaCreacion: DateTime&lt;br&gt;- leida: Boolean&lt;hr&gt;+ marcarLeida(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#9A89C9;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="1000" width="250" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="service_motor" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;MotorAdaptativoIA&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;+ generarRuta(estudianteId): RutaAprendizaje&lt;br&gt;+ generarRetroalimentacion(intentoId): Retroalimentacion&lt;br&gt;+ recomendarDificultad(): NivelDificultad&lt;br&gt;+ responderConsulta(mensaje): String" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#6B5CA5;fillColor=#F5F1FC;" vertex="1" parent="1">
+          <mxGeometry x="535" y="1245" width="310" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Comunicación -->
+        <mxCell id="class_conversacion" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Conversacion&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- tipo: TipoConversacion&lt;br&gt;- fechaCreacion: DateTime&lt;br&gt;- activa: Boolean&lt;hr&gt;+ agregarParticipante(): void&lt;br&gt;+ cerrar(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#D4A06A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="470" width="240" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_mensaje" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Mensaje&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- contenido: String&lt;br&gt;- fechaHora: DateTime&lt;br&gt;- tipoEmisor: TipoEmisor&lt;br&gt;- leido: Boolean&lt;hr&gt;+ marcarLeido(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#D4A06A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="470" width="225" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_tutoria" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Tutoria&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- fechaHoraInicio: DateTime&lt;br&gt;- duracionMinutos: Integer&lt;br&gt;- estado: EstadoTutoria&lt;br&gt;- enlaceReunion: String&lt;br&gt;- observaciones: String&lt;hr&gt;+ programar(): void&lt;br&gt;+ confirmar(): void&lt;br&gt;+ cancelar(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#D4A06A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="760" width="260" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="class_grupo" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;GrupoEstudio&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- id: String&lt;br&gt;- nombre: String&lt;br&gt;- codigoAcceso: String&lt;br&gt;- fechaCreacion: Date&lt;br&gt;- activo: Boolean&lt;hr&gt;+ agregarEstudiante(): void&lt;br&gt;+ retirarEstudiante(): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;strokeWidth=2;strokeColor=#D4A06A;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1735" y="1060" width="250" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- Herencia -->
+        <mxCell id="gen_estudiante" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeWidth=2;strokeColor=#5B7FA5;" edge="1" parent="1" source="class_estudiante" target="class_usuario"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="gen_docente" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeWidth=2;strokeColor=#5B7FA5;" edge="1" parent="1" source="class_docente" target="class_usuario"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="gen_admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeWidth=2;strokeColor=#5B7FA5;" edge="1" parent="1" source="class_admin" target="class_usuario"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Relaciones del contenido -->
+        <mxCell id="rel_comp_material" value="clasifica" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#4A8268;" edge="1" parent="1" source="class_competencia" target="class_material"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_comp_pregunta" value="clasifica" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#4A8268;" edge="1" parent="1" source="class_competencia" target="class_pregunta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_question_option" value="contiene" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeWidth=2;strokeColor=#4A8268;" edge="1" parent="1" source="class_pregunta" target="class_opcion"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_teacher_material" value="publica" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#4A8268;" edge="1" parent="1" source="class_docente" target="class_material"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_teacher_question" value="gestiona" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#4A8268;" edge="1" parent="1" source="class_docente" target="class_pregunta"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Relaciones de evaluación -->
+        <mxCell id="rel_exam_question" value="incluye" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#3D5A80;" edge="1" parent="1" source="class_simulacro" target="class_pregunta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_exam_attempt" value="origina" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#3D5A80;" edge="1" parent="1" source="class_simulacro" target="class_intento"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_student_attempt" value="realiza" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#3D5A80;" edge="1" parent="1" source="class_estudiante" target="class_intento"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_attempt_answer" value="registra" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeWidth=2;strokeColor=#3D5A80;" edge="1" parent="1" source="class_intento" target="class_respuesta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_answer_question" value="responde" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#3D5A80;" edge="1" parent="1" source="class_respuesta" target="class_pregunta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_answer_option" value="selecciona" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#3D5A80;" edge="1" parent="1" source="class_respuesta" target="class_opcion"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_attempt_result" value="calcula" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeWidth=2;strokeColor=#3D5A80;" edge="1" parent="1" source="class_intento" target="class_resultado"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_result_comp" value="corresponde a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#3D5A80;" edge="1" parent="1" source="class_resultado" target="class_competencia"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Relaciones de personalización -->
+        <mxCell id="rel_student_progress" value="posee" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=1;endArrow=none;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_estudiante" target="class_progreso"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_student_route" value="posee" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_estudiante" target="class_ruta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_route_module" value="contiene" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeWidth=2;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_ruta" target="class_modulo"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_module_comp" value="fortalece" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_modulo" target="class_competencia"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_module_material" value="recomienda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_modulo" target="class_material"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_attempt_feedback" value="genera" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_intento" target="class_feedback"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_teacher_feedback" value="puede crear" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_docente" target="class_feedback"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="dep_motor_route" value="&amp;lt;&amp;lt;create&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#6B5CA5;" edge="1" parent="1" source="service_motor" target="class_ruta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="dep_motor_feedback" value="&amp;lt;&amp;lt;create&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#6B5CA5;" edge="1" parent="1" source="service_motor" target="class_feedback"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="dep_progress_result" value="se actualiza con" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#6B5CA5;" edge="1" parent="1" source="class_progreso" target="class_resultado"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Relaciones de comunicación -->
+        <mxCell id="rel_conversation_message" value="contiene" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeWidth=2;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_conversacion" target="class_mensaje"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_user_conversation" value="participa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_usuario" target="class_conversacion"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_user_message" value="envía" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_usuario" target="class_mensaje"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="dep_motor_conversation" value="responde" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#6B5CA5;" edge="1" parent="1" source="service_motor" target="class_conversacion"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_student_tutoring" value="solicita" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_estudiante" target="class_tutoria"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_teacher_tutoring" value="atiende" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_docente" target="class_tutoria"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_teacher_group" value="dirige" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_docente" target="class_grupo"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="rel_student_group" value="pertenece" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#8A5A2B;" edge="1" parent="1" source="class_estudiante" target="class_grupo"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Multiplicidades principales -->
+        <mxCell id="mult_q_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_question_option"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_o_many" value="2..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_question_option"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_sim_many" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_exam_question"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_q_many" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_exam_question"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_sim_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_exam_attempt"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_attempt_many" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_exam_attempt"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_student_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_student_attempt"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_student_attempts" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_student_attempt"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_attempt_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_attempt_answer"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_answers_many" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_attempt_answer"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_route_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_route_module"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_modules_many" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_route_module"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_conv_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_conversation_message"><mxGeometry x="-1" relative="1" as="geometry"/></mxCell>
+        <mxCell id="mult_messages_many" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" connectable="0" parent="rel_conversation_message"><mxGeometry x="1" relative="1" as="geometry"/></mxCell>
+
+        <!-- Leyenda -->
+        <mxCell id="legend" value="&lt;b&gt;Convenciones UML&lt;/b&gt;&lt;br&gt;△ Herencia&lt;br&gt;◆ Composición&lt;br&gt;Línea continua: asociación&lt;br&gt;Línea discontinua: dependencia&lt;br&gt;1, 0..*, 1..*: multiplicidad" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fontSize=11;strokeColor=#CBD5E1;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1890" y="1285" width="220" height="110" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

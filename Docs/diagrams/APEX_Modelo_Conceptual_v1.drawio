@@ -1,0 +1,325 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.8 Chrome/140.0.7339.240 Electron/38.4.0 Safari/537.36" version="28.2.8" pages="5">
+  <diagram id="p1" name="01 · Identidad y roles">
+    <mxGraphModel dx="1427" dy="974" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="APEX · MODELO CONCEPTUAL" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=26;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="1320" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Personas, identidad compartida e incorporación de docentes. Las especializaciones conservan los conceptos del diagrama de clases." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="66" width="1320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Vista 1 · Versión 1.0 · 25 septiembre 2026 · Modelo del dominio independiente de la tecnología" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1050" width="1320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value="&lt;b&gt;Usuario · abstracto&lt;/b&gt;&lt;br&gt;Nombre · correo · fecha de nacimiento&lt;br&gt;Foto de perfil opcional · estado" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="510" y="150" width="360" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="student" value="&lt;b&gt;Estudiante&lt;/b&gt;&lt;br&gt;Programa académico · semestre" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="70" y="410" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="teacher" value="&lt;b&gt;Docente&lt;/b&gt;&lt;br&gt;Código de empleado · especialidad" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="540" y="410" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" value="&lt;b&gt;Administrador&lt;/b&gt;&lt;br&gt;Nivel de acceso asignado" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="410" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=0;" parent="1" source="student" target="user" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="370" />
+              <mxPoint x="690" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=0;" parent="1" source="teacher" target="user" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=0;" parent="1" source="admin" target="user" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="370" />
+              <mxPoint x="690" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="assignment" value="&lt;b&gt;Asignación de acompañamiento&lt;/b&gt;&lt;br&gt;Vincula a un docente con un estudiante.&lt;br&gt;Es la base del acceso académico autorizado." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="250" y="680" width="360" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="1 estudiante / 0..* asignaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" parent="1" source="student" target="assignment" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="1 docente / 0..* asignaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=0.25;exitY=1;entryX=1;entryY=0.5;" parent="1" source="teacher" target="assignment" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="invite" value="&lt;b&gt;Invitación docente&lt;/b&gt;&lt;br&gt;Correo autorizado · vigencia · estado&lt;br&gt;El destinatario establece su contraseña." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="850" y="680" width="400" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="1 emisor / 0..* invitaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="admin" target="invite" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="Habilita el ingreso del docente" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="teacher" target="invite" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;REGLAS Y LECTURA&lt;/b&gt;&lt;br&gt;Fecha de nacimiento obligatoria. El MVP atiende una sola organización.&lt;br&gt;Los desarrolladores asumen inicialmente la administración. El registro público no concede ese rol.&lt;br&gt;Triángulo vacío: especialización. Línea: asociación. Las asignaciones 0..* son una propuesta flexible por validar." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="70" y="875" width="1240" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="p2" name="02 · Organización del aprendizaje">
+    <mxGraphModel dx="1400" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="APEX · MODELO CONCEPTUAL" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=26;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1320" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Estructura conceptual propuesta para clasificar contenido y personalizar el estudio. Los nombres se alinearán con el componente elegido." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="66" width="1320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Vista 2 · Versión 1.0 · 25 septiembre 2026 · Modelo del dominio independiente de la tecnología" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1050" width="1320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="program" value="&lt;b&gt;Programa académico&lt;/b&gt;&lt;br&gt;Contexto formativo del estudiante" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="170" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="component" value="&lt;b&gt;Componente de estudio&lt;/b&gt;&lt;br&gt;MVP: Inglés o Razonamiento Cuantitativo" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="540" y="170" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="nucleus" value="&lt;b&gt;Núcleo temático&lt;/b&gt;&lt;br&gt;Unidad de contenido y seguimiento" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="170" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0" value="Orienta la selección de contenido" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="program" target="component">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="Agrupa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="component" target="nucleus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="material" value="&lt;b&gt;Material de estudio&lt;/b&gt;&lt;br&gt;Recurso de aprendizaje publicado" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="720" y="440" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="question" value="&lt;b&gt;Pregunta&lt;/b&gt;&lt;br&gt;Enunciado · opciones · criterio de corrección" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="440" width="280" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Organiza" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="nucleus" target="material">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Clasifica" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="nucleus" target="question">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="&lt;b&gt;Fuente de contenido&lt;/b&gt;&lt;br&gt;Procedencia y referencia del recurso&lt;br&gt;Caja de herramientas del ICFES" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="910" y="730" width="360" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="Tiene procedencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="material" target="source">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Tiene procedencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="question" target="source">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" value="&lt;b&gt;Administrador de contenido&lt;/b&gt;&lt;br&gt;Función inicial de los desarrolladores" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="Gestiona" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="admin" target="material">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="Gestiona" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="1" source="admin" target="question">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="630" />
+              <mxPoint x="1200" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;ALCANCE&lt;/b&gt;&lt;br&gt;Este modelo no convierte cada concepto en una tabla ni fija una taxonomía oficial.&lt;br&gt;La distribución entre componentes y núcleos se validará con el material seleccionado.&lt;br&gt;Tipos de pregunta, cantidad y duración del simulacro general: pendientes de contrastar con la guía oficial aplicable." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="900" width="1240" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="p3" name="03 · Evaluación y resultados">
+    <mxGraphModel dx="1427" dy="974" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="APEX · MODELO CONCEPTUAL" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=26;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="1320" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Distinguir la evaluación propuesta, el intento del estudiante y el resultado evita confundir reanudación con un intento nuevo." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="66" width="1320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Vista 3 · Versión 1.0 · 25 septiembre 2026 · Modelo del dominio independiente de la tecnología" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1050" width="1320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="student" value="Estudiante" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="70" y="180" width="280" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="evaluation" value="&lt;b&gt;Evaluación&lt;/b&gt;&lt;br&gt;Diagnóstico inicial&lt;br&gt;Cuestionario de componente&lt;br&gt;Simulacro general" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="530" y="160" width="330" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="question" value="Pregunta" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="1060" y="180" width="280" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0" value="Contiene 1..* preguntas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="evaluation" target="question" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="attempt" value="&lt;b&gt;Intento de evaluación&lt;/b&gt;&lt;br&gt;Participación del estudiante&lt;br&gt;Respuestas confirmadas · estado · tiempos" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="520" y="440" width="350" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="1 estudiante / 0..* intentos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" parent="1" source="student" target="attempt" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="1 evaluación / 0..* intentos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="evaluation" target="attempt" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="answer" value="&lt;b&gt;Respuesta del estudiante&lt;/b&gt;&lt;br&gt;Selección registrada para una pregunta" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="440" width="320" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Registra 0..* respuestas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="attempt" target="answer" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="Cada respuesta corresponde a 1 pregunta" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="question" target="answer" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="result" value="&lt;b&gt;Resultado de evaluación&lt;/b&gt;&lt;br&gt;Aciertos · desempeño por núcleo&lt;br&gt;Estimación inicial en el diagnóstico" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="520" y="740" width="350" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Produce 0..1 resultado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="attempt" target="result" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;REGLAS CONFIRMADAS Y PENDIENTES&lt;/b&gt;&lt;br&gt;Un intento por estudiante y evaluación asignada; se permiten nuevas evaluaciones. Se puede retroceder.&lt;br&gt;Diagnóstico: 7 preguntas sin límite total. Cuestionario específico: 15 preguntas / 30 minutos.&lt;br&gt;Reanudar tras desconexión conserva el mismo intento. Pendientes: cronómetro, plazo de retorno y fórmula de nivel." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=14;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="70" y="920" width="1270" height="105" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="p4" name="04 · Progreso y acompañamiento">
+    <mxGraphModel dx="1213" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="APEX · MODELO CONCEPTUAL" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=26;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="1320" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Vista conceptual del seguimiento: los resultados sustentan el progreso y las recomendaciones. Las credenciales nunca forman parte del contexto de IA." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="66" width="1320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Vista 4 · Versión 1.0 · 25 septiembre 2026 · Modelo del dominio independiente de la tecnología" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1050" width="1320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="result" value="Resultado de evaluación" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="60" y="170" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="history" value="&lt;b&gt;Historial académico&lt;/b&gt;&lt;br&gt;Reúne resultados del estudiante" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="60" y="390" width="290" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="progress" value="&lt;b&gt;Progreso por núcleo&lt;/b&gt;&lt;br&gt;Aciertos · evolución&lt;br&gt;Prácticas completadas · comparaciones" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="60" y="630" width="290" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="student" value="Estudiante" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="525" y="170" width="310" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="conversation" value="&lt;b&gt;Conversación con IA&lt;/b&gt;&lt;br&gt;Intercambio en lenguaje natural" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="525" y="390" width="310" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="message" value="&lt;b&gt;Mensaje&lt;/b&gt;&lt;br&gt;Cada conversación contiene mensajes" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="525" y="630" width="310" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="assistant" value="&lt;b&gt;Asistente de IA&lt;/b&gt;&lt;br&gt;Usa contexto académico autorizado" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="390" width="330" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="recommend" value="&lt;b&gt;Recomendación personalizada&lt;/b&gt;&lt;br&gt;Orientación según resultados&lt;br&gt;Referencias cuando correspondan" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="630" width="330" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0" value="Se incorpora a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="result" target="history" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="Permite calcular" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="history" target="progress" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Tiene 1 historial" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="student" target="history" edge="1">
+          <mxGeometry x="-0.6531" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="Mantiene 0..* conversaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="student" target="conversation" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="Contiene 0..* mensajes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="conversation" target="message" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Es atendida por" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="conversation" target="assistant" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="Genera" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="assistant" target="recommend" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="Aporta medidas de desempeño" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=0.5;exitY=0;entryX=0.5;entryY=0;" parent="1" source="result" target="assistant" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="205" y="125" />
+              <mxPoint x="1165" y="125" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="doc" value="Docente asignado" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="60" y="870" width="290" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="tutoring" value="&lt;b&gt;Tutoría&lt;/b&gt;&lt;br&gt;Acompañamiento del estudiante" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="525" y="870" width="310" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="feedback" value="Retroalimentación docente" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=17;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="870" width="330" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="Gestiona" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="doc" target="tutoring" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="Consulta según asignación" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" parent="1" source="doc" target="progress" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" value="Puede aportar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#334155;strokeColor=#64748B;strokeWidth=1.5;labelBackgroundColor=#FFFFFF;endArrow=none;" parent="1" source="tutoring" target="feedback" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Tutorías y retroalimentación se vinculan al estudiante de la asignación. Frecuencias y cardinalidades detalladas quedan por definir." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="975" width="1270" height="55" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="p5" name="05 · Alcance y reglas">
+    <mxGraphModel dx="1213" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="APEX · MODELO CONCEPTUAL" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=26;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="1320" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Notas de interpretación. Las reglas temporales detalladas se desarrollarán en los diagramas de actividades, secuencia y estados." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="66" width="1320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Vista 5 · Versión 1.0 · 25 septiembre 2026 · Modelo del dominio independiente de la tecnología" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1050" width="1320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" value="&lt;b&gt;ALCANCE DEL MODELO&lt;/b&gt;&lt;br&gt;Modelo conceptual del dominio, independiente del diagrama de clases detallado y del MER.&lt;br&gt;Conceptos y relaciones del negocio, sin tipos de programación, métodos, PK ni FK.&lt;br&gt;Conceptos repetidos entre páginas representan el mismo concepto.&lt;br&gt;La notación de generalización conserva Usuario como clase abstracta; no se presupone exclusividad de roles.&lt;br&gt;Una institución y un componente en el MVP." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="60" y="150" width="620" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="&lt;b&gt;REGLAS CONFIRMADAS&lt;/b&gt;&lt;br&gt;Fuera de evaluaciones: bloqueo de sesión a los 90 segundos y nueva verificación de identidad.&lt;br&gt;En evaluación: alerta a los 5 min; cuenta regresiva a los 7; bloqueo a los 8. Incluir entrada táctil.&lt;br&gt;Cinco accesos fallidos: bloqueo de cuatro minutos; falta definir ventana de conteo.&lt;br&gt;Confirmaciones en acciones críticas y doble confirmación antes de iniciar una evaluación." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="720" y="150" width="620" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="pending" value="&lt;b&gt;DECISIONES ABIERTAS&lt;/b&gt;&lt;br&gt;• Elegir Inglés o Razonamiento Cuantitativo.&lt;br&gt;• Fórmula de calificación y rangos de estimación de nivel.&lt;br&gt;• Reglas del cronómetro y plazo de recuperación por desconexión.&lt;br&gt;• Consecuencia definitiva del bloqueo por inactividad.&lt;br&gt;• Fuente oficial, formato y duración del simulacro general.&lt;br&gt;• Taxonomía componente / competencia / núcleo temático.&lt;br&gt;• Retención de chats, resultados, registros de acceso y alcance de los seis meses.&lt;br&gt;• Límites de espera para guardar respuestas y responder desde IA.&lt;br&gt;• Fuentes autorizadas para la IA y criterios de cita.&lt;br&gt;• Detalles de asignación docente y tutorías." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="60" y="450" width="620" height="375" as="geometry" />
+        </mxCell>
+        <mxCell id="tech" value="&lt;b&gt;CONTEXTO TÉCNICO · NO ES PARTE DEL DOMINIO&lt;/b&gt;&lt;br&gt;React Native / Expo para la app.&lt;br&gt;Gemini API y n8n local para el flujo de IA.&lt;br&gt;Firebase está integrado en el prototipo.&lt;br&gt;PostgreSQL / Supabase es una alternativa recomendada, no una migración confirmada.&lt;br&gt;La elección tecnológica no cambia estas relaciones conceptuales." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="720" y="450" width="620" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="quality" value="&lt;b&gt;CALIDAD Y DATOS&lt;/b&gt;&lt;br&gt;Objetivo de accesibilidad: WCAG 2.2 AA. Capacidad inicial: 7 usuarios simultáneos.&lt;br&gt;Carga de preguntas: máximo 60 s con estado visible. Resultados: objetivo de 30 s, sin espera artificial.&lt;br&gt;Historial académico para el estudiante. Resultados para estudios posteriores: anonimización y retención pendientes.&lt;br&gt;Eliminar cuenta incluye identidad de acceso, perfil, progreso e historial de IA; aclarar resultados de estudio y copias de respaldo." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=16;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" parent="1" vertex="1">
+          <mxGeometry x="720" y="675" width="620" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Leyenda: azul = identidad y estructura; verde = actividad académica; violeta = análisis y acompañamiento; ámbar = administración o decisiones abiertas.&#xa;Las asociaciones sin multiplicidad requieren especificación posterior; no representan automáticamente relaciones de una base de datos." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;align=center;verticalAlign=middle;spacing=12;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fillColor=none;strokeColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="950" width="1280" height="65" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

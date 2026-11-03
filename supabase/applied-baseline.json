@@ -1,0 +1,13 @@
+{
+  "status": "Reported manually applied by project owner; no remote verification performed",
+  "sha256": {
+    "202609280001_initial_private.sql": "9874990a15c0b0a42f4c7bb9d9f7c9150aa48407fb3842944288d66154825214",
+    "202610030001_identity_permissions.sql": "1ca2d0f47c0f80ebe61f7836151a1e1ac31b7e37e215ad0001442d7e0923305a",
+    "202610030002_versioned_content.sql": "cf31267eef5cee2b55af93a0c16312e17e4a737a6c5baa8a3c685346fe769cd7",
+    "202610030003_assessment_api.sql": "231a95a02e9c37bf439e7dfb8a136774fe7edbf2493afa34cf75922e2987b5c8",
+    "202610030004_document_storage.sql": "6bb32dfb5cdd6f43669f279831f41989b84b8def663eb9446ae9a3291a474673",
+    "seed-demo.sql": "a960d2a30dec1d35cf0c742e7f326bc4214a9d11291e1b5326a52f9a2f1c1cda",
+    "202610250002_admin_panel.sql": "dd5a9453dbcc3f9f8e187b3fc8097d895973af3671982bf56653dfe4aff6f4af",
+    "202610260001_teacher_invitation_modes.sql": "39a88b6fe1d3b070e2ab9956cb450c489f193c9ccd7ed22dfa604b1acb2abfef"
+  }
+}

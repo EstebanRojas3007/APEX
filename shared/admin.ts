@@ -1,0 +1,11 @@
+export type AdminRole='estudiante'|'docente'|'administrador';
+export type AccountStatus='activo'|'inactivo';
+export type AdminTab='inicio'|'usuarios'|'profesores'|'salones'|'catalogo'|'auditoria';
+export type AdminUser={id:string;authId:string|null;name:string;email:string;role:AdminRole;status:AccountStatus;programId:string|null;program:string|null;semester:number|null;identityVerified:boolean;emailConfirmed?:boolean;lastSignInAt:string|null;lastActivityAt:string|null;activeExams:number;assigned?:boolean};
+export type AdminPage<T>={rows:T[];total:number;page:number;pageSize:number};
+export type AdminOverview={students:{active:number;inactive:number};teachers:{active:number;inactive:number};groups:{active:number;inactive:number}};
+export type AdminInvitation={id:string;email:string;name:string;mode:'new'|'existing';userId:string|null;currentRole:AdminRole;proposedRole:'docente';reason:string;status:'pending'|'processing'|'sent'|'error'|'cancelled'|'expired'|'accepted';createdAt:string;expiresAt:string;sentAt:string|null;acceptedAt:string|null;errorCode:string|null};
+export type CatalogEntry={id:string;name:string};
+export type AdminCatalog={programs:CatalogEntry[];components:CatalogEntry[];associations:{programId:string;componentId:string;impact:{students:number;memberships:number;routes:number;assignments:number;activeExams:number;canRemove:boolean;reason:string}}[]};
+export type AdminAudit={id:string;actor:string|null;createdAt:string;target:string;entity:string;action:string;reason:string;before:Record<string,unknown>|null;after:Record<string,unknown>|null};
+export type AdminChange={title:string;body:string;operation:string;payload:Record<string,unknown>;dispatch?:boolean};

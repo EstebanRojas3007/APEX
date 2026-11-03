@@ -1,0 +1,4 @@
+{
+  "compilerOptions": { "target": "ES2023", "module": "ESNext", "moduleResolution": "bundler", "strict": true, "noUncheckedIndexedAccess": true, "noEmit": true, "esModuleInterop": true, "types": ["node"], "skipLibCheck": true, "allowImportingTsExtensions": true, "lib": ["ES2023", "DOM"] },
+  "include": ["./**/*.ts", "../shared/**/*.ts"]
+}

@@ -1,0 +1,32 @@
+import {test,expect} from '@playwright/test';
+test('Demo defaults to APEX English and keeps a historical rc attempt/result outside the main flow',async({page,request})=>{
+ await page.setViewportSize({width:390,height:844});
+ const email=`mvp-e2e-${Date.now()}@example.test`,starts:any[]=[],errors:string[]=[];let fixtureAuthorization='';
+ page.on('pageerror',error=>errors.push(error.message));
+ page.on('request',req=>{if(req.url().endsWith('/rpc/apex_api'))fixtureAuthorization=req.headers().authorization??'';});
+ page.on('response',async res=>{if(res.url().endsWith('/rpc/apex_api')&&res.request().postDataJSON()?.operation==='start')starts.push(await res.json());});
+ await page.goto('/');await page.getByRole('button',{name:'Crear una cuenta',exact:true}).click();
+ await page.getByRole('textbox',{name:'Nombre',exact:true}).fill('MVP English fixture');await page.getByLabel('Fecha de nacimiento',{exact:true}).fill('2000-01-31');
+ await page.getByRole('button',{name:'Programa de demostración',exact:true}).click();
+ await page.getByRole('textbox',{name:'Correo electrónico',exact:true}).fill(email);await page.getByRole('textbox',{name:'Contraseña',exact:true}).fill('Prueba123+');await page.getByRole('textbox',{name:'Confirmar contraseña',exact:true}).fill('Prueba123+');
+ await page.getByRole('checkbox').check();await page.getByRole('button',{name:'Crear cuenta de estudiante',exact:true}).click();
+ await expect(page.getByText('Hola, MVP English fixture',{exact:true})).toBeVisible();await expect(page.getByText('Diagnóstico APEX · Inglés',{exact:true})).toBeVisible();
+ // Attach a synthetic rc history only in the isolated fixture; the signup assigned English automatically.
+ const attached=await request.post('http://127.0.0.1:54329/__test/mvp-legacy',{headers:{Authorization:fixtureAuthorization},data:{email}});expect(attached.ok()).toBeTruthy();const historical=await attached.json();
+ await page.getByRole('button',{name:'Inicio',exact:true}).click();await expect(page.getByText('Diagnóstico APEX · Inglés',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Conocer mi punto de partida',exact:true}).click();
+ await expect(page.getByText('Inglés · MVP',{exact:true})).toBeVisible();await expect(page.getByText('Otros componentes · Historial conservado',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Preparar diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Entiendo las condiciones',exact:true}).click();await page.getByRole('button',{name:'Sí, iniciar diagnóstico',exact:true}).click();
+ await expect(page.getByText('Pregunta 1 de 7',{exact:true})).toBeVisible();expect(starts[0].title).toBe('Diagnóstico APEX · Inglés');expect([1,2,3].map(level=>starts[0].questions.filter((q:any)=>q.level===level).length)).toEqual([2,2,3]);
+ await page.getByRole('button',{name:'Finalizar diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Finalizar y ver resultado',exact:true}).click();await expect(page.getByText('0 aciertos de 7 preguntas',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Inicio',exact:true}).click();await expect(page.getByText('Ya conoces tu punto de partida',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Retomar el mismo intento',exact:true})).toHaveCount(0);
+ await page.getByRole('button',{name:'Diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Retomar el mismo intento',exact:true}).click();await expect(page.getByText('Pregunta 1 de 7',{exact:true})).toBeVisible();
+ expect(starts[1].id).toBe(historical.attemptId);expect(starts[1].answers).toEqual(historical.answers);
+ await page.getByRole('button',{name:'Finalizar diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Finalizar y ver resultado',exact:true}).click();await expect(page.getByText('1 acierto de 7 preguntas',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Inicio',exact:true}).click();await expect(page.getByText('0/7',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Mi progreso',exact:true}).click();await expect(page.getByText('0 aciertos de 7 preguntas',{exact:true})).toBeVisible();await expect(page.getByText(/Diagnóstico inicial.*1\/7 aciertos/)).toBeVisible();
+ await page.screenshot({path:'Docs/evidence/demo-mvp-english-rc-history-390.png',fullPage:true});
+ await page.getByRole('button',{name:'Mi ruta',exact:true}).click();await expect(page.getByRole('button',{name:/^Abrir sección /})).toHaveCount(7);
+ await page.getByRole('button',{name:'Abrir sección 1 de Básico',exact:true}).click();await expect(page.getByText('Contenido pendiente',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toHaveCount(0);
+ expect(errors).toEqual([]);
+});

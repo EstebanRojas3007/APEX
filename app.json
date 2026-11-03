@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "APEX",
+    "slug": "apex",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "co.apex.study"
+    },
+    "web": {
+      "bundler": "metro",
+      "name": "APEX · Tu próximo paso"
+    },
+    "scheme": "apex",
+    "plugins": [
+      "@react-native-community/datetimepicker"
+    ]
+  }
+}

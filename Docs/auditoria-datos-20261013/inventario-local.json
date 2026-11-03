@@ -1,0 +1,725 @@
+{
+  "audit_date": "2026-10-13",
+  "remote_inspected": false,
+  "scope": "Static local DDL. FK inventory excludes JSON/array, function, RLS, Storage and external dependencies.",
+  "original_table_count": 32,
+  "local_table_count": 50,
+  "same_name_count": 21,
+  "original_names_absent": [
+    "administrador",
+    "cita_fuente",
+    "conversacion_ia",
+    "docente",
+    "evento_acceso",
+    "invitacion_docente",
+    "mensaje",
+    "recomendacion",
+    "recomendacion_resultado",
+    "retroalimentacion",
+    "tutoria"
+  ],
+  "tables": [
+    {
+      "name": "programa_academico",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 9,
+      "same_original_name": true,
+      "foreign_keys_to": [],
+      "referenced_by": [
+        "estudiante",
+        "programa_componente"
+      ]
+    },
+    {
+      "name": "componente",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 10,
+      "same_original_name": true,
+      "foreign_keys_to": [],
+      "referenced_by": [
+        "competencia",
+        "evaluacion_componente",
+        "nucleo_tematico",
+        "programa_componente"
+      ]
+    },
+    {
+      "name": "programa_componente",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 11,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "componente",
+        "programa_academico"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "competencia",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 12,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "componente"
+      ],
+      "referenced_by": [
+        "leccion_version",
+        "pregunta",
+        "seccion_ruta"
+      ]
+    },
+    {
+      "name": "nucleo_tematico",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 13,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "componente"
+      ],
+      "referenced_by": [
+        "material_nucleo",
+        "pregunta"
+      ]
+    },
+    {
+      "name": "usuario",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 14,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "auth.users"
+      ],
+      "referenced_by": [
+        "asignacion_docente",
+        "consentimiento",
+        "estudiante",
+        "sesion_actividad"
+      ]
+    },
+    {
+      "name": "estudiante",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 15,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "programa_academico",
+        "usuario"
+      ],
+      "referenced_by": [
+        "asignacion_docente",
+        "asignacion_evaluacion",
+        "convocatoria_banco",
+        "exposicion_pregunta",
+        "progreso_leccion",
+        "progreso_seccion",
+        "prueba_reloj_tecnica",
+        "ruta_nivel_version",
+        "ruta_version",
+        "sesion_refuerzo",
+        "solicitud_ruta",
+        "trabajo_ia"
+      ]
+    },
+    {
+      "name": "consentimiento",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 16,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "usuario"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "fuente",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 17,
+      "same_original_name": true,
+      "foreign_keys_to": [],
+      "referenced_by": [
+        "bloque_preguntas",
+        "carga_banco",
+        "fragmento_documental",
+        "material_estudio",
+        "plantilla_evaluacion",
+        "pregunta"
+      ]
+    },
+    {
+      "name": "material_estudio",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 18,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "fuente"
+      ],
+      "referenced_by": [
+        "material_nucleo"
+      ]
+    },
+    {
+      "name": "material_nucleo",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 19,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "material_estudio",
+        "nucleo_tematico"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "pregunta",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 20,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "auth.users",
+        "bloque_preguntas",
+        "competencia",
+        "fuente",
+        "nucleo_tematico"
+      ],
+      "referenced_by": [
+        "exposicion_pregunta",
+        "item_evaluacion",
+        "opcion_respuesta",
+        "seleccion_intento"
+      ]
+    },
+    {
+      "name": "opcion_respuesta",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 21,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "pregunta"
+      ],
+      "referenced_by": [
+        "respuesta"
+      ]
+    },
+    {
+      "name": "evaluacion",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 22,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "plantilla_evaluacion"
+      ],
+      "referenced_by": [
+        "asignacion_evaluacion",
+        "convocatoria_banco",
+        "evaluacion_componente",
+        "item_evaluacion"
+      ]
+    },
+    {
+      "name": "evaluacion_componente",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 23,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "componente",
+        "evaluacion"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "item_evaluacion",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 24,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "evaluacion",
+        "pregunta"
+      ],
+      "referenced_by": [
+        "respuesta",
+        "seleccion_intento"
+      ]
+    },
+    {
+      "name": "asignacion_evaluacion",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 25,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "estudiante",
+        "evaluacion"
+      ],
+      "referenced_by": [
+        "intento"
+      ]
+    },
+    {
+      "name": "intento",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 26,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "asignacion_evaluacion"
+      ],
+      "referenced_by": [
+        "decision_avance",
+        "exposicion_pregunta",
+        "intento_ruta",
+        "reloj_intento",
+        "respuesta",
+        "resultado",
+        "seleccion_intento",
+        "sesion_refuerzo"
+      ]
+    },
+    {
+      "name": "respuesta",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 27,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "intento",
+        "item_evaluacion",
+        "opcion_respuesta"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "resultado",
+      "created_in": "supabase/migrations/202609280001_initial_private.sql",
+      "created_line": 28,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "intento"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "asignacion_docente",
+      "created_in": "supabase/migrations/202610030001_identity_permissions.sql",
+      "created_line": 7,
+      "same_original_name": true,
+      "foreign_keys_to": [
+        "estudiante",
+        "usuario"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "auditoria_rol",
+      "created_in": "supabase/migrations/202610030001_identity_permissions.sql",
+      "created_line": 11,
+      "same_original_name": false,
+      "foreign_keys_to": [],
+      "referenced_by": []
+    },
+    {
+      "name": "sesion_actividad",
+      "created_in": "supabase/migrations/202610030001_identity_permissions.sql",
+      "created_line": 15,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "auth.sessions",
+        "usuario"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "bloqueo_auth",
+      "created_in": "supabase/migrations/202610030001_identity_permissions.sql",
+      "created_line": 20,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "auth.users"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "fragmento_documental",
+      "created_in": "supabase/migrations/202610030002_versioned_content.sql",
+      "created_line": 21,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "fuente"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "bloque_preguntas",
+      "created_in": "supabase/migrations/202610040001_english_question_blocks.sql",
+      "created_line": 4,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "auth.users",
+        "fuente"
+      ],
+      "referenced_by": [
+        "pregunta",
+        "seleccion_intento"
+      ]
+    },
+    {
+      "name": "carga_banco",
+      "created_in": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "created_line": 19,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "fuente"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "plantilla_evaluacion",
+      "created_in": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "created_line": 24,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "fuente"
+      ],
+      "referenced_by": [
+        "configuracion_mvp",
+        "convocatoria_banco",
+        "evaluacion"
+      ]
+    },
+    {
+      "name": "convocatoria_banco",
+      "created_in": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "created_line": 32,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "evaluacion",
+        "plantilla_evaluacion"
+      ],
+      "referenced_by": [
+        "agotamiento_banco",
+        "intento_ruta",
+        "prueba_reloj_tecnica"
+      ]
+    },
+    {
+      "name": "seleccion_intento",
+      "created_in": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "created_line": 38,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "bloque_preguntas",
+        "intento",
+        "item_evaluacion",
+        "pregunta"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "exposicion_pregunta",
+      "created_in": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "created_line": 44,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "intento",
+        "pregunta"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "agotamiento_banco",
+      "created_in": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "created_line": 49,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "convocatoria_banco"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "regla_ruta_version",
+      "created_in": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "created_line": 4,
+      "same_original_name": false,
+      "foreign_keys_to": [],
+      "referenced_by": [
+        "progreso_leccion",
+        "ruta_version"
+      ]
+    },
+    {
+      "name": "leccion_version",
+      "created_in": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "created_line": 9,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "competencia"
+      ],
+      "referenced_by": [
+        "paso_ruta",
+        "progreso_leccion"
+      ]
+    },
+    {
+      "name": "progreso_leccion",
+      "created_in": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "created_line": 20,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "leccion_version",
+        "regla_ruta_version"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "solicitud_ruta",
+      "created_in": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "created_line": 26,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante"
+      ],
+      "referenced_by": [
+        "ruta_version"
+      ]
+    },
+    {
+      "name": "ruta_version",
+      "created_in": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "created_line": 30,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "regla_ruta_version",
+        "ruta_version",
+        "solicitud_ruta"
+      ],
+      "referenced_by": [
+        "paso_ruta",
+        "ruta_version"
+      ]
+    },
+    {
+      "name": "paso_ruta",
+      "created_in": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "created_line": 37,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "leccion_version",
+        "ruta_version"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "configuracion_mvp",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 10,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "plantilla_evaluacion"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "trabajo_ia",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 12,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante"
+      ],
+      "referenced_by": [
+        "mensaje_refuerzo",
+        "ruta_nivel_version"
+      ]
+    },
+    {
+      "name": "ruta_nivel_version",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 19,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "ruta_nivel_version",
+        "trabajo_ia"
+      ],
+      "referenced_by": [
+        "ruta_nivel_version",
+        "seccion_ruta"
+      ]
+    },
+    {
+      "name": "seccion_ruta",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 24,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "competencia",
+        "ruta_nivel_version"
+      ],
+      "referenced_by": [
+        "progreso_seccion",
+        "sesion_refuerzo"
+      ]
+    },
+    {
+      "name": "progreso_seccion",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 30,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "seccion_ruta"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "sesion_refuerzo",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 35,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "estudiante",
+        "intento",
+        "seccion_ruta"
+      ],
+      "referenced_by": [
+        "intento_ruta",
+        "mensaje_refuerzo"
+      ]
+    },
+    {
+      "name": "mensaje_refuerzo",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 43,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "sesion_refuerzo",
+        "trabajo_ia"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "intento_ruta",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 48,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "convocatoria_banco",
+        "intento",
+        "sesion_refuerzo"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "decision_avance",
+      "created_in": "supabase/migrations/202610110001_learning_schema.sql",
+      "created_line": 52,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "intento"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "configuracion_reloj",
+      "created_in": "supabase/migrations/202610120001_assessment_clocks.sql",
+      "created_line": 6,
+      "same_original_name": false,
+      "foreign_keys_to": [],
+      "referenced_by": []
+    },
+    {
+      "name": "reloj_intento",
+      "created_in": "supabase/migrations/202610120001_assessment_clocks.sql",
+      "created_line": 13,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "intento"
+      ],
+      "referenced_by": []
+    },
+    {
+      "name": "prueba_reloj_tecnica",
+      "created_in": "supabase/migrations/202610120002_technical_clock_test.sql",
+      "created_line": 6,
+      "same_original_name": false,
+      "foreign_keys_to": [
+        "convocatoria_banco",
+        "estudiante"
+      ],
+      "referenced_by": []
+    }
+  ],
+  "migrations": [
+    {
+      "file": "supabase/migrations/202609280001_initial_private.sql",
+      "sha256": "9874990a15c0b0a42f4c7bb9d9f7c9150aa48407fb3842944288d66154825214"
+    },
+    {
+      "file": "supabase/migrations/202610030001_identity_permissions.sql",
+      "sha256": "1ca2d0f47c0f80ebe61f7836151a1e1ac31b7e37e215ad0001442d7e0923305a"
+    },
+    {
+      "file": "supabase/migrations/202610030002_versioned_content.sql",
+      "sha256": "cf31267eef5cee2b55af93a0c16312e17e4a737a6c5baa8a3c685346fe769cd7"
+    },
+    {
+      "file": "supabase/migrations/202610030003_assessment_api.sql",
+      "sha256": "231a95a02e9c37bf439e7dfb8a136774fe7edbf2493afa34cf75922e2987b5c8"
+    },
+    {
+      "file": "supabase/migrations/202610030004_document_storage.sql",
+      "sha256": "6bb32dfb5cdd6f43669f279831f41989b84b8def663eb9446ae9a3291a474673"
+    },
+    {
+      "file": "supabase/migrations/202610040001_english_question_blocks.sql",
+      "sha256": "9cd724a2ce59e76d0c4a56d0a4d681eee9f0fac0e2dd115ca7b0552e17caee09"
+    },
+    {
+      "file": "supabase/migrations/202610060001_apex_english_bank.sql",
+      "sha256": "074f33da3b5c76958c6d8ff0b661b7379b53cdabecf5a2daaf9fe04b4047e493"
+    },
+    {
+      "file": "supabase/migrations/202610060002_bank_assessment_api.sql",
+      "sha256": "a8f3094171c73afed366d17afd5f57a1a0b7ea71b6db17522244af8981353f20"
+    },
+    {
+      "file": "supabase/migrations/202610060003_individual_route_contract.sql",
+      "sha256": "b9af30abf87ef51d6f22c2fce41828205767f051272dea49928cd5a49a71cfbb"
+    },
+    {
+      "file": "supabase/migrations/202610060004_registration_profile.sql",
+      "sha256": "998568e45f5a6ee6cc528172ed750723e187aee3e2ddf8c1276cdb6fb3bae6b9"
+    },
+    {
+      "file": "supabase/migrations/202610110001_learning_schema.sql",
+      "sha256": "9e1430a2ca68246c9d18eb9953318839f06d091673ab65890ad012065d59c35f"
+    },
+    {
+      "file": "supabase/migrations/202610110002_learning_assessments.sql",
+      "sha256": "f378bb1db9b88d1af645d46cb95ad2e192e4e94d4c9aaf5315b924d951c8d77a"
+    },
+    {
+      "file": "supabase/migrations/202610110003_learning_publication.sql",
+      "sha256": "bc5b775980903020c4ed23325a981a1e5a62e22f85a8d70a185d662656cf0a48"
+    },
+    {
+      "file": "supabase/migrations/202610110004_learning_ai.sql",
+      "sha256": "c485e590f8aac1ef0b9d261e6eded42a617fb18c17f1e326ecf38695d1481536"
+    },
+    {
+      "file": "supabase/migrations/202610110005_diagnostic_guard.sql",
+      "sha256": "7a85b377dc9d6323f178db026f845f700dbcee0559cada493ab7522e58b1321a"
+    },
+    {
+      "file": "supabase/migrations/202610110006_mvp_component_summary.sql",
+      "sha256": "ac407ab280b8d39eab839b13828feba04bf3cba6e1dc1ade591f84d5bb95ce35"
+    },
+    {
+      "file": "supabase/migrations/202610120001_assessment_clocks.sql",
+      "sha256": "4604da7f9ddacba13dbb71d3689fb3ad4380c889f530b883bc1da483b612669e"
+    },
+    {
+      "file": "supabase/migrations/202610120002_technical_clock_test.sql",
+      "sha256": "4d14c5ca0abaf1dad053e233ab00c01bdee79d5b3863c7a905bd4fa3c4c3014b"
+    }
+  ]
+}

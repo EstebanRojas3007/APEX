@@ -1,0 +1,5 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": { "strict": true, "allowImportingTsExtensions": true, "noUncheckedIndexedAccess": true, "types": ["node", "react"] },
+  "exclude": ["node_modules", "dist", "dist-android", "server", "supabase/functions/admin-invitations/index.ts", "tests", "playwright.config.ts"]
+}

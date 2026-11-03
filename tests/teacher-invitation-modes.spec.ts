@@ -1,0 +1,54 @@
+import {test,expect,type Page} from '@playwright/test';
+import {navigateAdmin} from './admin-navigation';
+async function login(page:Page,email:string,path='/'){
+ await page.goto(path);await page.getByRole('textbox',{name:'Correo electrónico',exact:true}).fill(email);
+ await page.getByRole('textbox',{name:'Contraseña',exact:true}).fill('Prueba123+');await page.getByRole('button',{name:'Iniciar sesión',exact:true}).click();
+}
+for(const width of [1280,390])test(`existing invitation, confirmation, explicit acceptance and stable refresh (${width}px web)`,async({page,context,request})=>{
+ await page.setViewportSize({width,height:900});const response=await request.post('http://127.0.0.1:54329/__test/admin/setup'),f=await response.json();
+ let authorization='',prepares=0,dispatches=0;
+ page.on('request',req=>{if(req.url().endsWith('/rpc/apex_api')){authorization=req.headers().authorization??authorization;if(req.postDataJSON().operation==='admin_invite_prepare')prepares++;}if(req.url().endsWith('/functions/v1/admin-invitations'))dispatches++;});
+ await login(page,f.admin.email);const panel=page.getByTestId('admin-panel');
+ await navigateAdmin(page,'Profesores');
+ await expect(panel.getByRole('heading',{name:'Profesores registrados',exact:true})).toHaveCount(0);
+ await expect(panel.getByRole('button',{name:'Desplegar lista de profesores',exact:true})).toHaveAttribute('aria-expanded','false');
+ await panel.getByRole('button',{name:'Invitar profesor sin cuenta',exact:true}).scrollIntoViewIfNeeded();
+ await page.screenshot({path:`test-results/teacher-invitation-modes-${width}-web.png`,fullPage:true});
+ await panel.getByRole('button',{name:'Desplegar lista de profesores',exact:true}).click();
+ await expect(panel.getByRole('button',{name:'Ocultar lista de profesores',exact:true})).toHaveAttribute('aria-expanded','true');
+ await panel.getByRole('textbox',{name:'Buscar profesores e invitaciones',exact:true}).fill(f.teacher.email);
+ await expect(panel.getByText(f.teacher.email,{exact:false})).toBeVisible();
+ await page.screenshot({path:`test-results/teacher-invitation-list-${width}-web.png`,fullPage:true});
+ await panel.getByRole('textbox',{name:'Buscar profesores e invitaciones',exact:true}).fill('');
+ await panel.getByRole('button',{name:'Invitar profesor con cuenta existente',exact:true}).click();
+ await expect(panel.getByRole('textbox',{name:'Correo de invitación',exact:true})).toHaveCount(0);
+ await panel.getByRole('textbox',{name:'ID del usuario APEX',exact:true}).fill(f.student.id);
+ await panel.getByRole('button',{name:'Consultar ID APEX',exact:true}).click();
+ await expect(panel.getByText(`Correo destinatario: ${f.student.email}`,{exact:true})).toBeVisible();
+ const reason=panel.getByRole('textbox',{name:'Motivo de la invitación',exact:true});await reason.fill('Asignación docente por aceptación expresa');
+ // Hold a background refresh while the actual input is focused and scrolled into view.
+ await reason.focus();
+ const before=await reason.evaluate(el=>{let parent=el.parentElement;while(parent&&parent.scrollHeight<=parent.clientHeight)parent=parent.parentElement;(window as any).__invitationFocus=el;return parent?.scrollTop??0;});
+ let release!:()=>void,received!:()=>void;const gate=new Promise<void>(resolve=>{release=resolve;}),ready=new Promise<void>(resolve=>{received=resolve;});
+ const hold=async(route:import('@playwright/test').Route)=>{if(route.request().postDataJSON().operation==='admin_users'){const response=await route.fetch();received();await gate;await route.fulfill({response});}else await route.continue();};
+ await page.route('**/rpc/apex_api',hold);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await ready;
+ await expect(reason).toBeFocused();release();await expect(panel.getByRole('button',{name:'Actualizar administración',exact:true})).toBeEnabled();
+ await page.unroute('**/rpc/apex_api',hold);await expect(reason).toHaveValue('Asignación docente por aceptación expresa');await expect(reason).toBeFocused();
+ const after=await reason.evaluate(el=>{let parent=el.parentElement;while(parent&&parent.scrollHeight<=parent.clientHeight)parent=parent.parentElement;return {same:(window as any).__invitationFocus===el,y:parent?.scrollTop??0};});
+ expect(after.same).toBeTruthy();expect(Math.abs(after.y-before)).toBeLessThan(3);
+ await expect(panel.getByRole('button',{name:'Ocultar lista de profesores',exact:true})).toBeVisible();
+ await panel.getByRole('button',{name:'Enviar invitación',exact:true}).click();
+ const dialog=page.getByRole('dialog');await expect(dialog).toContainText(f.student.email);await expect(dialog).toContainText('Rol actual: Estudiante');await expect(dialog).toContainText('Rol propuesto: Profesor');await expect(dialog).toContainText('Asignación docente por aceptación expresa');
+ expect(prepares).toBe(0);expect(dispatches).toBe(0);await dialog.getByRole('button',{name:'Volver',exact:true}).click();expect(prepares).toBe(0);
+ await panel.getByRole('button',{name:'Enviar invitación',exact:true}).click();await dialog.getByRole('button',{name:'Confirmar operación',exact:true}).click();
+ await expect(panel.getByText(`${f.student.email} · Envío aceptado por el proveedor · pendiente de aceptación`,{exact:true})).toBeVisible();expect(prepares).toBe(1);expect(dispatches).toBe(1);
+ const linkResponse=await request.post('http://127.0.0.1:54329/__test/admin/control',{headers:{Authorization:authorization},data:{action:'existing-invite-link',email:f.student.email}}),link=await linkResponse.json();
+ const recipient=await context.newPage();await login(recipient,f.student.email,`/auth/invite#teacher-invitation=${link.id}&token=${link.token}`);await expect(recipient).toHaveURL(/\/auth\/invite$/);
+ await expect(recipient.getByRole('heading',{name:'Aceptar invitación de Profesor',exact:true})).toBeVisible();
+ await expect(recipient.getByRole('button',{name:'Aceptar rol Profesor',exact:true})).toBeEnabled();
+ await expect(recipient.getByText('Aún no tienes grupos asignados',{exact:true})).toHaveCount(0);
+ await recipient.getByRole('button',{name:'Aceptar rol Profesor',exact:true}).click();await expect(recipient.getByText('Aún no tienes grupos asignados',{exact:true})).toBeVisible();
+ await recipient.close();await page.bringToFront();await panel.getByRole('button',{name:'Actualizar administración',exact:true}).click();
+ await expect(panel.getByText(`${f.student.email} · Aceptada`,{exact:true})).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+});

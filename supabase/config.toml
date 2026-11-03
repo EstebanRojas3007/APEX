@@ -1,0 +1,46 @@
+project_id = "apex"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://localhost:8081"
+additional_redirect_urls = ["http://localhost:8081/auth/invite", "http://localhost:8081", "apex://auth/recovery"]
+jwt_expiry = 3600
+enable_signup = true
+enable_anonymous_sign_ins = false
+minimum_password_length = 8
+password_requirements = "lower_upper_letters_digits_symbols"
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+secure_password_change = true
+
+# Enable after migrations, if supported by the chosen Auth deployment/plan.
+[auth.hook.password_verification_attempt]
+enabled = false
+uri = "pg-functions://postgres/apex_private/password_verification_hook"
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+# Client sends its real session JWT, never the publishable key as a bearer token.
+# Handler additionally calls Auth getUser and the current administrative RPC.
+[functions.admin-invitations]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/admin-invitations/index.ts"

@@ -1,0 +1,54 @@
+import {test,expect} from '@playwright/test';
+for(const width of [1280,390])test(`Mi ruta, explicit completion, linked review, unavailable tutor and recovered new attempt (${width}px)`,async({page,request})=>{
+ test.setTimeout(120000);await page.setViewportSize({width,height:844});
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ const email=`learning-e2e-${width}-${Date.now()}@example.test`;
+ const fixture=async(action:string)=>{const res=await request.post('http://127.0.0.1:54329/__test/learning',{data:{email,action}});expect(res.ok()).toBeTruthy();return res.json();};
+ const registration=await request.post('http://127.0.0.1:54329/auth/v1/signup',{data:{email,password:'Prueba123+',data:{name:'Learning fixture',birthDate:'2000-01-01',program:'demo',semester:1,consent:true}}});expect(registration.ok()).toBeTruthy();
+ const login=async(restoreSection=false)=>{await page.getByRole('textbox',{name:'Correo electrónico',exact:true}).fill(email);await page.getByRole('textbox',{name:'Contraseña',exact:true}).fill('Prueba123+');await page.getByRole('button',{name:'Iniciar sesión',exact:true}).click();if(!restoreSection)await expect(page.getByText('Hola, Learning fixture',{exact:true})).toBeVisible();};
+ const sectionButton=(order:number,level='Básico')=>page.getByRole('button',{name:`Abrir sección ${order} de ${level}`,exact:true});
+ await page.goto('/');await login();await page.getByRole('button',{name:'Mi ruta',exact:true}).click();
+ await expect(page.getByRole('button',{name:/^Nivel /})).toHaveCount(3);
+ await expect(page.getByRole('button',{name:/^Abrir sección /})).toHaveCount(0);
+ await page.getByRole('button',{name:/^Nivel Básico,/}).click();
+ await expect(page.getByRole('button',{name:/^Abrir sección /})).toHaveCount(7);
+ await expect(page.getByText(/Completa el diagnóstico para habilitar Básico/)).toBeVisible();
+ await expect(page.getByText('Procesando…',{exact:true})).toHaveCount(0);
+ await sectionButton(1).click();await expect(page).toHaveURL(/#mi-ruta\/1\/1$/);await expect(page.getByText('Sección bloqueada',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toHaveCount(0);
+ await page.getByRole('button',{name:'Volver a Mi ruta',exact:true}).click();
+ await page.getByRole('button',{name:/^Nivel Intermedio,/}).click();
+ await sectionButton(1,'Intermedio').click();await expect(page.getByText(/Aprueba el control de Básico/)).toBeVisible();await page.goBack();await expect(sectionButton(1,'Intermedio')).toBeVisible();await expect(page.getByRole('button',{name:/^Nivel Intermedio,/})).toHaveAttribute('aria-expanded','true');
+ await page.getByRole('button',{name:'Diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Preparar diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Entiendo las condiciones',exact:true}).click();await page.getByRole('button',{name:'Sí, iniciar diagnóstico',exact:true}).click();
+ await expect(page.getByText('Pregunta 1 de 7',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Finalizar diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Finalizar y ver resultado',exact:true}).click();await expect(page.getByText(/El diagnóstico orienta tu ruta/)).toBeVisible();
+ await fixture('unavailable');await page.getByRole('button',{name:'Continuar con mi ruta',exact:true}).click();await expect(page.getByText('generación de ruta pendiente',{exact:true})).toBeVisible();await expect(page.getByText(/El tutor no está disponible/)).toBeVisible();
+ await sectionButton(3).click();await expect(page.getByText('Contenido pendiente',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toHaveCount(0);await expect(page.getByRole('button',{name:'Refuerzo',exact:true})).toHaveCount(0);
+ await page.screenshot({path:`Docs/evidence/route-pending-demo-mvp-${width}.png`,fullPage:true});expect((await fixture('state')).completed).toBe(0);await page.getByRole('button',{name:'Volver a Mi ruta',exact:true}).click();
+ await page.getByRole('button',{name:'Reintentar generación',exact:true}).click();await fixture('generate');await expect(page.getByText('Synthetic section 1',{exact:true})).toBeVisible({timeout:10000});
+ // A ready response with an incomplete body must remain pending and never complete.
+ const routeURL='**/rest/v1/rpc/apex_my_route';
+ await page.route(routeURL,async route=>{const response=await route.fetch();const data=await response.json();data.levels[0].sections[0].explanation='';await route.fulfill({response,json:data});});
+ await sectionButton(1).click();await expect(page.getByText('Contenido pendiente',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toHaveCount(0);expect((await fixture('state')).completed).toBe(0);
+ await page.unroute(routeURL);await page.getByRole('button',{name:'Volver a Mi ruta',exact:true}).click();
+ await sectionButton(2).click();await expect(page.getByText('Sección bloqueada',{exact:true})).toBeVisible();await expect(page.getByText('Synthetic original explanation',{exact:true})).toHaveCount(0);await page.getByRole('button',{name:'Volver a Mi ruta',exact:true}).click();
+ await sectionButton(1).click();await expect(page).toHaveURL(/#mi-ruta\/1\/1$/);expect((await fixture('state')).completed).toBe(0);await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toBeEnabled();
+ for(const heading of ['Objetivo','Explicación','Ejemplos originales','Práctica formativa','Referencias autorizadas','Refuerzo contextualizado'])await expect(page.getByText(heading,{exact:true})).toBeVisible();
+ await expect(page.getByText('Materiales disponibles',{exact:true})).toHaveCount(0);
+ await page.getByRole('button',{name:'Refuerzo',exact:true}).click();await expect(page.getByText('Refuerzo de la sección',{exact:true})).toBeVisible();await fixture('unavailable');await page.getByRole('button',{name:'Volver a la sección',exact:true}).click();await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toBeEnabled();
+ await page.goBack();await expect(sectionButton(1)).toBeVisible();expect((await fixture('state')).completed).toBe(0);await page.goForward();await expect(page.getByRole('button',{name:'Marcar sección terminada',exact:true})).toBeEnabled();
+ for(let n=1;n<=7;n++){
+  if(n>1)await sectionButton(n).click();
+  await page.getByRole('button',{name:'Marcar sección terminada',exact:true}).click();await expect(page.getByRole('button',{name:'Sección terminada',exact:true})).toBeDisabled();
+  await page.getByRole('button',{name:'Volver a Mi ruta',exact:true}).click();
+ }
+ expect((await fixture('state')).completed).toBe(7);await sectionButton(1).click();await expect(page.getByRole('button',{name:'Sección terminada',exact:true})).toBeDisabled();
+ await page.reload();await login(true);await expect(page).toHaveURL(/#mi-ruta\/1\/1$/);await expect(page.getByRole('button',{name:'Sección terminada',exact:true})).toBeDisabled();expect((await fixture('state')).completed).toBe(7);
+ await page.screenshot({path:`Docs/evidence/route-section-demo-mvp-${width}.png`,fullPage:true});await page.getByRole('button',{name:'Volver a Mi ruta',exact:true}).click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
+ await page.getByRole('button',{name:'Ver controles',exact:true}).click();await page.getByRole('button',{name:'Preparar control',exact:true}).click();await page.getByRole('button',{name:'Entiendo las condiciones',exact:true}).click();await page.getByRole('button',{name:'Sí, iniciar control',exact:true}).click();
+ await expect(page.getByText('Pregunta 1 de 10',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Finalizar control',exact:true}).click();await page.getByRole('button',{name:'Finalizar y ver resultado',exact:true}).click();await expect(page.getByText('Evaluación reprobada',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Ir al repaso',exact:true}).click();
+ await expect(page.getByText('Repaso de la evaluación',{exact:true})).toBeVisible();await fixture('unavailable');await expect(page.getByText(/Tutor no disponible; falta servicio/)).toBeVisible({timeout:10000});await expect(page.getByRole('button',{name:'Refuerzo terminado',exact:true})).toBeDisabled();
+ await page.getByRole('button',{name:'Reintentar conexión del tutor',exact:true}).click();await fixture('generate');await expect(page.getByText('Tutor disponible',{exact:true})).toBeVisible({timeout:10000});await expect(page.getByRole('button',{name:'Refuerzo terminado',exact:true})).toBeDisabled();
+ await page.getByRole('textbox',{name:'Mensaje para el tutor',exact:true}).fill('Help with the omitted questions');await page.getByRole('button',{name:'Enviar mensaje',exact:true}).click();await fixture('generate');await expect(page.getByRole('button',{name:'Refuerzo terminado',exact:true})).toBeEnabled({timeout:10000});await page.getByRole('button',{name:'Refuerzo terminado',exact:true}).click();
+ await page.getByRole('button',{name:'Preparar nuevo intento',exact:true}).click();await page.getByRole('button',{name:'Entiendo las condiciones',exact:true}).click();await page.getByRole('button',{name:'Sí, iniciar control',exact:true}).click();await expect(page.getByText('Pregunta 1 de 10',{exact:true})).toBeVisible();
+ await page.reload();await login();await page.getByRole('button',{name:'Diagnóstico',exact:true}).click();await page.getByRole('button',{name:'Retomar el mismo intento',exact:true}).click();await expect(page.getByText('Pregunta 1 de 10',{exact:true})).toBeVisible();
+ expect(errors).toEqual([]);
+});
