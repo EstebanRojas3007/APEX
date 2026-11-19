@@ -44,3 +44,9 @@ file_size_limit = "50MiB"
 enabled = true
 verify_jwt = true
 entrypoint = "./functions/admin-invitations/index.ts"
+
+# Session JWT required; handler validates Auth and the server-configured pilot UUID.
+[functions.english-tutor]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/english-tutor/index.ts"

@@ -3,8 +3,14 @@ import {Text,View} from 'react-native';
 import type {ContextChat as Chat} from '../shared/contracts';
 import {request} from './api';
 import {Button,Card,Field,styles as s} from './ui';
+import {EnglishTutorChat,type EnglishTutorState} from './EnglishTutorChat';
 export type ChatTarget={kind:'section';sectionId:string}|{kind:'review';attemptId:string};
-export function ContextChat({target,onError,onCompleted}:{target:ChatTarget|null;onError:(error:unknown)=>void;onCompleted:()=>void}){
+type ContextProps={target:ChatTarget;onError:(error:unknown)=>void;onCompleted:()=>void};
+export function ContextChat({target,general,...props}:Omit<ContextProps,'target'>&{target:ChatTarget|null;general:EnglishTutorState}){
+ if(!target)return <EnglishTutorChat chat={general}/>;
+ return <ContextualChat key={JSON.stringify(target)} target={target} {...props}/>;
+}
+function ContextualChat({target,onError,onCompleted}:ContextProps){
  const [chat,setChat]=useState<Chat|null>(null),[text,setText]=useState(''),[busy,setBusy]=useState(false);
  const pending=useRef<{key:string;text:string}|null>(null);
  useEffect(()=>{let alive=true;setChat(null);pending.current=null;setText('');if(!target)return;let id:string|undefined;
@@ -13,7 +19,6 @@ export function ContextChat({target,onError,onCompleted}:{target:ChatTarget|null
   return()=>{alive=false;clearInterval(timer);};
  },[target]);
  async function action(fn:()=>Promise<void>){if(busy)return;setBusy(true);try{await fn();}catch(error){onError(error);}finally{setBusy(false);}}
- if(!target)return <Card><Text style={s.heading}>Tutor contextual</Text><Text style={s.text}>Abre «Refuerzo» desde una sección o «Ir al repaso» desde una evaluación reprobada. El tutor usa ese contexto y materiales autorizados.</Text><Text style={s.muted}>La disponibilidad depende del servicio IA configurado en servidor.</Text></Card>;
  return <View style={s.stack}><Text style={s.title}>{target.kind==='review'?'Repaso de la evaluación':'Refuerzo de la sección'}</Text><Card><Text style={s.text}>{target.kind==='review'?'Trabaja las preguntas incorrectas u omitidas y las habilidades que requieren refuerzo.':'Consulta el objetivo, contenido y práctica de esta sección.'}</Text><Text style={s.muted}>El tutor orienta el aprendizaje. Los resultados se conservan.</Text>{!chat&&<Text style={s.muted}>Recuperando conversación…</Text>}{chat&&<Text accessibilityLiveRegion="polite" style={s.notice}>{chat.status==='ready'?'Tutor disponible':chat.status==='pending'?'Respuesta pendiente del servicio IA':chat.status==='running'?'Preparando respuesta…':chat.status==='unavailable'?'Tutor no disponible; falta servicio o material autorizado.':'No se pudo validar la respuesta del tutor.'}</Text>}</Card>{chat?.messages.map(m=><Card key={m.id}><Text style={s.tag}>{m.role==='assistant'?'Tutor APEX':'Tú'}</Text><Text style={s.text}>{m.text}</Text></Card>)}{chat&&!chat.completedAt&&<Card><Field label="Mensaje para el tutor" value={text} multiline onChangeText={value=>{setText(value);if(pending.current?.text!==value.trim())pending.current=null;}}/><Button label="Enviar mensaje" disabled={busy||!text.trim()||chat.status==='pending'||chat.status==='running'} onPress={()=>void action(async()=>{
   const message=pending.current??{key:`msg-${Date.now()}-${Math.random().toString(36).slice(2)}`,text:text.trim()};pending.current=message;
   setChat(await request<Chat>('/chat/send',undefined,'POST',{sessionId:chat.id,...message}));pending.current=null;setText('');

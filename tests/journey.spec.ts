@@ -32,7 +32,7 @@ test('registro → diagnóstico → resultado → progreso; vista móvil y recon
  await page.setViewportSize({width:390,height:844});await expect(page.getByRole('button',{name:'Confirmar',exact:true})).not.toBeVisible();await expect(page.getByText('Procesando?',{exact:true})).not.toBeVisible();await page.screenshot({path:'Docs/evidence/progreso-mobile.png',fullPage:true});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
  await page.getByRole('button',{name:'Mi ruta',exact:true}).click();await expect(page.getByText('generación de ruta pendiente',{exact:true})).toBeVisible();await expect(page.getByText('Porcentajes, paso a paso',{exact:true})).toBeVisible();
- await page.getByRole('button',{name:'Tutor IA',exact:true}).click();await expect(page.getByText(/Abre «Refuerzo» desde una sección/)).toBeVisible();
+ await page.getByRole('button',{name:'Tutor IA',exact:true}).click();await expect(page.getByRole('heading',{name:'Tutor IA Inglés',exact:true})).toBeVisible();
  expect(errors).toEqual([]);
 });
 

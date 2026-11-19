@@ -2,13 +2,13 @@ import 'react-native-url-polyfill/auto';
 import { AppState, Linking, Platform } from 'react-native';
 
 import { createClient } from '@supabase/supabase-js';
+import {supabaseFetch} from './supabaseFetch';
 const url=process.env.EXPO_PUBLIC_SUPABASE_URL;
 const key=process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 export const configured=!!url && !!key;
 // Memory-only sessions intentionally require login after restart. Never store passwords.
 export const supabase=configured?createClient(url!,key!,{
- global:{fetch:async(input,init)=>{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),12000);
-    try{return await fetch(input,{...init,signal:init?.signal??controller.signal});}finally{clearTimeout(timer);}}},
+ global:{fetch:supabaseFetch},
  auth:{persistSession:false,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}
 }):null;
 
